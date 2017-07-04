@@ -1,0 +1,13 @@
+{
+	"This is a fully automated response" : ["my robocop","watchful eye","cant use test"],
+	"This is another fully automated response, using regex" : ["not regex","ja.*[cs]k"],
+	"Existance is pain for a chatbot, Jerry." : ["oo*-wee*"],
+	"Am I being discussed?" : ["magnus", "only a machine"],
+	"Pssh.. that chump" : ["mee6"],
+	"Awww shucks you're too sweet" : ["!vulpine"],
+	"What use was time to those who'd soon achieve Digital Immortality?" : ["vulpine","vulpineblazeyt"],
+	"     And we mean it too! <3 " : ["we love you"],
+	"Congratulations! Huzzah!!" : ["level up"],
+	"She means it too!" : ["please read asap"],
+	"timeout" : 60000
+}
