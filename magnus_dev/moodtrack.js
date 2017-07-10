@@ -19,7 +19,8 @@ var check_and_store = function(message){
 
         }else{
             message.channel.sendMessage("Your input did not match expected format.\n"
-                                        +"     !:mood:number:long description");
+                                        +"!:mood:number(1-5):long description\n")
+                                        +"eg.     !:happy:5:the bot is finally working!");
 		return false;
         }
 //         message.channel.sendMessage("I have no current saving capacity.");
