@@ -31,17 +31,27 @@ var check_and_store = function(message){
         MongoClient.connect(configDB.url, (err, database) => {
           if (err) return console.log(err)
           
-          database.collection('moodtrack').save(dict, (err, result) => {
-              if (err) return console.log(err)
-              console.log('saved to database: '+JSON.stringify(dict))
+//           database.collection('moodtrack').save(dict, (err, result) => {
+//               if (err) return console.log(err)
+//               console.log('saved to database: '+JSON.stringify(dict))
+//               message.channel.sendMessage("Your entry has been saved to the database.");
+//             })
+//         })
+            database.collection('moodtrack', function(err, collection) {
+//              var object= {word:'TEST'};
+             collection.insert(dict, {safe:true}, function(err, result) {
+                 console.log('saved to database: '+JSON.stringify(dict))
               message.channel.sendMessage("Your entry has been saved to the database.");
-            })
-        })
+//                collection.findOne({word:'TEST'}, function(err, item) {
+//                   console.log(item);
+//                });
+             });        
+         });
+
 	}
     
     
-
-
+            
 	
 
 }
