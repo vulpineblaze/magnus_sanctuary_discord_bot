@@ -12,6 +12,7 @@ const user_active = require('./active.js');
 const cookie = require('./cookie.js');
 const autorespond = require('./autorespond.js');
 const redirector = require('./redirector.js');
+const moodtrack = require('./moodtrack.js');
 
 // create an instance of a Discord Client, and call it bot
 const bot = new Discord.Client();
@@ -83,6 +84,7 @@ bot.on('message', message => {
 
 	redirector.check_and_respond(message);
 	autorespond.check_and_respond(message);
+	moodtrack.check_and_store(message);
 
 });
 
