@@ -11,7 +11,7 @@ var check_and_store = function(message){
         message.channel.sendMessage("Your mood is:"+mood+"\nYour number is:"+number+"\nYour desc is:"+desc);
         message.channel.sendMessage("I have no current saving capacity.");
 	}
-    console.log(str+"|"+mood+"|"number+"|"desc);
+    console.log(str+"|"+mood+"|"+number+"|"+desc);
     
 
 
