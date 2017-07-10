@@ -4,12 +4,17 @@ var check_and_store = function(message){
     var str = message.content.toLowerCase();
 	if(str.charAt(0)==':'){
 	    var res = str.split(":");
-        var mood = res[0];
-        var number = res[1];
-        var desc = res[2];
+        var mood = res[1];
+        var number = res[2];
+        var desc = res[3];
+        
+        message.channel.sendMessage("Your mood is:"+mood+"\nYour number is:"+number+"\nYour desc is:"+desc);
+        message.channel.sendMessage("I have no current saving capacity.");
 	}
-    console.log(str+"|"+res);
-	
+    console.log(str+"|"+mood+"|"number+"|"desc);
+    
+
+
 	
 
 }
