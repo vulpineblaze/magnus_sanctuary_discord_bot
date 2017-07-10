@@ -38,7 +38,7 @@ var check_and_respond = function(message){
 		  var response = responses[attributename];
 			if(new RegExp(response.join("|")).test(message.content.toLowerCase())){
 		  	autorespond=false;
-		  	message.channel.sendMessage(attributename);
+		  	message.channel.send(attributename);
 		  	setTimeout(toggle_autorespond, autorespond_timeout, true);
 	  	}
 	  }
