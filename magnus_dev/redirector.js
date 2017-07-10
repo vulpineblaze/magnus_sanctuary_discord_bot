@@ -46,7 +46,7 @@ var check_and_respond = function(message){
         var redirect = redirects[attributename];
         if(new RegExp(redirect.join("|")).test(message.content.toLowerCase())){
           watchful=false;
-          message.channel.sendMessage(message.author
+          message.channel.send(message.author
                       +', It looks like your discussing #'
                       +attributename
                       +'! If so, Please head over to that channel.');
