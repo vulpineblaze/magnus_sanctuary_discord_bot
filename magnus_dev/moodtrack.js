@@ -21,7 +21,7 @@ var check_and_store = function(message){
 	 
         
         dict.push({
-            server:   message.guild.toString(),
+            server:   message.guild.id.toString(),
             user: message.author.toString(),
             mood: res[1],
             number: res[2],
