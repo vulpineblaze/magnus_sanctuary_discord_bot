@@ -11,7 +11,7 @@ var check_and_respond = function(message){
     
         var dict = []; // create an empty array
         dict.push({
-            link:   message.attachments.proxyURL.toString()
+            link:   message.attachments.first().proxyURL.toString()
         });
         
         MongoClient.connect(configDB.url, (err, database) => {
