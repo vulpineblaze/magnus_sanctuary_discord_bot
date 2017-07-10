@@ -15,10 +15,10 @@ var check_and_store = function(message){
         var desc = res[3];
 //         console.log(str+"|"+mood+"|"+number+"|"+desc);
 		if(mood && number && desc && !isNaN(number)){
-            message.channel.sendMessage("Your mood is: "+mood+"\nYour number is: "+number+"\nYour desc is: "+desc);
+            message.channel.send("Your mood is: "+mood+"\nYour number is: "+number+"\nYour desc is: "+desc);
 
         }else{
-            message.channel.sendMessage("Your input did not match expected format.\n"
+            message.channel.send("Your input did not match expected format.\n"
                                         +"!:mood:number(1-5):long description\n"
                                         +"eg.     !:happy:5:the bot is finally working!");
 		return false;
@@ -49,7 +49,7 @@ var check_and_store = function(message){
 //              var object= {word:'TEST'};
              collection.insert(dict, {safe:true}, function(err, result) {
                  console.log('saved to database: '+JSON.stringify(dict))
-              message.channel.sendMessage("Your entry has been saved to the database.");
+              message.channel.send("Your entry has been saved to the database.");
 //                collection.findOne({word:'TEST'}, function(err, item) {
 //                   console.log(item);
 //                });
