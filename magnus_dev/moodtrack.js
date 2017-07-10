@@ -45,8 +45,8 @@ var check_and_store = function(message){
 //                collection.findOne({word:'TEST'}, function(err, item) {
 //                   console.log(item);
 //                });
-             });        
-         });
+             })      
+         })
 
 	}
     
