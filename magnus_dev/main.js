@@ -58,27 +58,27 @@ bot.on('message', message => {
 
   if (message.content.toLowerCase() === 'ping') {
     // send "pong" to the same channel.
-    message.channel.sendMessage('pong');
+    message.channel.send('pong');
   }
 
 
   if(is_admin && message.content.toLowerCase().includes("show timestamps")){
   	var ts_string = user_active.show_all_stamps()
-		message.channel.sendMessage("timestamps:\n"+ts_string);
+		message.channel.send("timestamps:\n"+ts_string);
   }
 
   if(is_admin && message.content.toLowerCase().includes("!cookie")){
   // if(message.content.toLowerCase().includes("!cookie")){
   	console.log(message.text);
   	var retval = cookie.give_cookie(message,"!cookie");
-  	message.channel.sendMessage(retval);
+  	message.channel.send(retval);
   }
 
   if(message.content.toLowerCase().includes("!topic")){
     var topic = message.channel.topic;
     var chan_name = message.channel.name;
     console.log("topic:"+topic);
-    message.channel.sendMessage("#"+chan_name+":\n"+topic);
+    message.channel.send("#"+chan_name+":\n"+topic);
   }
 
 
