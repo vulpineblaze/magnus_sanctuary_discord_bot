@@ -2,7 +2,6 @@
 const MongoClient = require('mongodb').MongoClient
 
 
-var db
 var configDB = require('./database.js');
 
 
@@ -27,13 +26,13 @@ var check_and_store = function(message){
             number: number,
             desc: desc
         });
-        console.log('built: '+dict);
+        console.log('built: '+JSON.stringify(dict));
         MongoClient.connect(configDB.url, (err, database) => {
           if (err) return console.log(err)
-          db = database
-          db.collection('moodtrack').save(dict, (err, result) => {
+          
+          database.collection('moodtrack').save(dict, (err, result) => {
               if (err) return console.log(err)
-              console.log('saved to database: '+dict)
+              console.log('saved to database: '+JSON.stringify(dict))
               message.channel.sendMessage("Your entry has been saved to the database.");
             })
         })
