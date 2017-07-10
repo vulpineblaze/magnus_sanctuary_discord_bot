@@ -6,7 +6,7 @@
 	"Pssh.. that chump" : ["mee6"],
 	"Awww shucks you're too sweet" : ["!vulpine"],
 	"     And we mean it too! <3 " : ["we love you"],
-	"Congratulations! Huzzah!!" : ["level[ed]* up"],
+	"Congratulations! Huzzah!!" : ["[level|leveled] up"],
 	"She means it too!" : ["please read asap"],
 	"timeout" : 60000
 }
