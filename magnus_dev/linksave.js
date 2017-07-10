@@ -7,7 +7,7 @@ var configDB = require('./database.js');
 
 
 var check_and_respond = function(message){
-	console.log(message);
+	console.log(message.attachments);
 	
 }
 
