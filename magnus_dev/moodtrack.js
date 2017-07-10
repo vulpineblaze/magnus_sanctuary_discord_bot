@@ -48,7 +48,7 @@ var check_and_store = function(message){
              })      
          })
 
-	}
+	})
     
     
             
