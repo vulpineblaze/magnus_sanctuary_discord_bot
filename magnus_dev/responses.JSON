@@ -2,7 +2,7 @@
 	"This is a fully automated response" : ["my robocop","watchful eye","cant use test"],
 	"This is another fully automated response, using regex" : ["not regex","ja.*[cs]k"],
 	"Existance is pain for a chatbot, Jerry." : ["oo*-wee*"],
-	"Am I being discussed?" : ["magnus", "only a machine"],
+	"Am I being discussed?" : ["hey magnus", "only a machine"],
 	"Pssh.. that chump" : ["mee6"],
 	"Awww shucks you're too sweet" : ["!vulpine"],
 	"     And we mean it too! <3 " : ["we love you"],
