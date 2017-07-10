@@ -7,7 +7,7 @@ var configDB = require('./database.js');
 
 
 var check_and_respond = function(message){
-	if(message.attachments){
+	if(message.attachments.first()){
     
         var dict = []; // create an empty array
         dict.push({
