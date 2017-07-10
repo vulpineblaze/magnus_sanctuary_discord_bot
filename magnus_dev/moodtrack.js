@@ -18,13 +18,14 @@ var check_and_store = function(message){
 //         message.channel.sendMessage("I have no current saving capacity.");
         
         var dict = []; // create an empty array
-
+	 
+        
         dict.push({
-            server:   message.guild,
-            user: message.author,
-            mood: mood,
-            number: number,
-            desc: desc
+//             server:   message.guild,
+//             user: message.author,
+            mood: res[1],
+            number: res[2],
+            desc: res[3]
         });
         console.log('built: '+JSON.stringify(dict));
         MongoClient.connect(configDB.url, (err, database) => {
