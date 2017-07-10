@@ -14,7 +14,13 @@ var check_and_store = function(message){
         var number = res[2];
         var desc = res[3];
 //         console.log(str+"|"+mood+"|"+number+"|"+desc);
-        message.channel.sendMessage("Your mood is: "+mood+"\nYour number is: "+number+"\nYour desc is: "+desc);
+		if(mood && number && desc && !isNaN(number)){
+            message.channel.sendMessage("Your mood is: "+mood+"\nYour number is: "+number+"\nYour desc is: "+desc);
+
+        }else{
+            message.channel.sendMessage("Your input did not match expected format.\n"
+                                        +"     !:mood:number:long description");
+        }
 //         message.channel.sendMessage("I have no current saving capacity.");
         
         var dict = []; // create an empty array
