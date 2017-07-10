@@ -22,7 +22,8 @@ var check_and_respond = function(message){
             database.collection('linksave', function(err, collection) {
                 collection.insert(dict, {safe:true}, function(err, result) {
                      console.log('saved to database: '+JSON.stringify(dict))
-                    message.channel.send("Your pictures link has been saved to the database.");
+                    message.channel.send("Your pictures link has been saved to the database.\n"
+					 +"magnus.bot.nu/server-"+message.guild.id.toString());
                 })      
             })
         })
