@@ -7,7 +7,7 @@ var configDB = require('./database.js');
 
 
 var check_and_respond = function(message){
-	if(message.attachments.first()){
+	if(message.attachments.first() && message.content.toLowerCase().includes("!save")){
     
         var dict = []; // create an empty array
         dict.push({
