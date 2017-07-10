@@ -19,7 +19,7 @@ var check_and_store = function(message){
 
         }else{
             message.channel.sendMessage("Your input did not match expected format.\n"
-                                        +"!:mood:number(1-5):long description\n")
+                                        +"!:mood:number(1-5):long description\n"
                                         +"eg.     !:happy:5:the bot is finally working!");
 		return false;
         }
