@@ -78,12 +78,12 @@ var process_poll = function(message,delim="!cookie"){
             +option[option.length-1].option;
         }
 	}else if (!isNaN(res[1])){
-        var i = res[1];
+        var i = res[1]-1;
 	    if(option[i]){
             option[i].tally =+ 1;
             retval = option[i].option +" : "+ option[i].tally;
         }else{
-            retval = "Option "+i+" does not exist!";
+            retval = "Option "+res[1]+" does not exist!";
         }
 	}else if(res[1]=="clear"){
         poll = {poll:"",user:""};
