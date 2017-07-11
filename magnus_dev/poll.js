@@ -6,6 +6,7 @@
 
 var fs = require('fs');
 var userlist = "";
+var poll = [];
 
 var util = require('util');
 
@@ -30,7 +31,7 @@ var process_poll = function(message,delim="!cookie"){
 
 	var author = message.author.username;
 	var text = message.toString();
-    var poll = [];
+    
 	
 	var res = text.split(" ");
 	var quote = text.split("\"");
@@ -61,7 +62,9 @@ var process_poll = function(message,delim="!cookie"){
 	    if(!quote[1]){}else{
 	        poll.push({option:quote[1]});
         }
-	}
+	}else if(res[1]=="clear"){
+        poll = [];
+    }
 		  
 	console.log(author+"|"+res+"|"+quote);
 	
