@@ -60,7 +60,7 @@ var process_poll = function(message,delim="!cookie"){
 		  
 	console.log(author+"|"+res+"|"+quote);
 	
-	return "Still in progress";
+	return retval;
 	
 }
 
