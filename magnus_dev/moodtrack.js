@@ -30,7 +30,7 @@ var check_and_store = function(message){
         
         dict.push({
             server:   message.guild.id.toString(),
-            user: message.author.toString(),
+            user: message.author.toString().replace(/[\<\>\@]/g,'');,
             mood: res[1],
             number: res[2],
             desc: res[3]
