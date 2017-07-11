@@ -55,10 +55,12 @@ var process_poll = function(message,delim="!cookie"){
                     +poll.poll+"\n"
                     +poll.option;
         }else{
-            poll.push({poll:quote[1],
-                      user:author});
-		    retval = "Poll is now:\n"
-                +poll.poll;
+            if(!quote[1]){}else{
+                poll.push({poll:quote[1],
+                          user:author});
+                retval = "Poll is now:\n"
+                            +poll.poll;
+            }
         }
 	}else if (res[1]=="option"){
 	    if(!quote[1]){}else{
@@ -68,7 +70,7 @@ var process_poll = function(message,delim="!cookie"){
         poll = [];
     }
 		  
-	console.log(author+"|"+res+"|"+quote);
+	console.log(author+"|"+res+"|"+quote+"\n"+poll);
 	
 	return retval;
 	
