@@ -48,7 +48,7 @@ var process_poll = function(message,delim="!cookie"){
         
     }else if (res[1].charAt(0) =='\"'){
 	    // create poll
-        console.log("res1: "+res[1]);
+//         console.log("res1: "+res[1]);
         
         if(poll.poll){
             retval = "Poll already exists!\n"
@@ -70,7 +70,7 @@ var process_poll = function(message,delim="!cookie"){
         poll = [];
     }
 		  
-	console.log(author+"|"+res+"|"+quote+"\n"+poll);
+	console.log(author+"|"+res+"|"+quote+"\n"+JSON.stringify(poll));
 	
 	return retval;
 	
