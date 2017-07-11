@@ -85,7 +85,7 @@ var process_poll = function(message,delim="!cookie"){
         retval = "Cleared the poll!";
     }
 		  
-	console.log(author+"|"+res+"|"+quote+"\n"+JSON.stringify(poll));
+// 	console.log(author+"|"+res+"|"+quote+"\n"+JSON.stringify(poll));
 	
 	return retval;
 	
