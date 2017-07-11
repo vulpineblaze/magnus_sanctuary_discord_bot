@@ -47,7 +47,12 @@ var process_poll = function(message,delim="!cookie"){
 
     
     if(!res[1]){
-        
+        if(poll.poll){
+	        retval = poll.poll+"\n";
+            option.forEach(function(value){
+              retval += value.option +"\n";
+            });
+	    }
     }else if (res[1].charAt(0) =='\"'){
 	    // create poll
 //         console.log("res1: "+res[1]);
