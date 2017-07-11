@@ -6,7 +6,7 @@
 
 var fs = require('fs');
 var userlist = "";
-var poll = [];
+var poll = {};
 
 var util = require('util');
 
@@ -67,7 +67,7 @@ var process_poll = function(message,delim="!cookie"){
 	        poll.push({option:quote[1]});
         }
 	}else if(res[1]=="clear"){
-        poll = [];
+        poll = {};
     }
 		  
 	console.log(author+"|"+res+"|"+quote+"\n"+JSON.stringify(poll));
