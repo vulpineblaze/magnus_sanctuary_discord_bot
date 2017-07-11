@@ -36,16 +36,19 @@ var process_poll = function(message,delim="!cookie"){
 	var quote = text.split("\"");
     
     var retval = "Your input did not match expected pattern\n"
-              +"!poll \"text\" | creates poll "
-              +"!poll option \"text\" | adds option "
-              +"!poll 1 | votes for option 1 "
-              +"!poll clear | wipes current poll "
+              +"!poll \"text\" | creates poll \n"
+              +"!poll option \"text\" | adds option \n"
+              +"!poll 1 | votes for option 1 \n"
+              +"!poll clear | wipes current poll \n"
               ; 
 	
+    
     if(!res[1]){
         
     }else if (res[1].charAt(0) =='\"'){
 	    // create poll
+        console.log("res1: "+res[1]);
+        
         if(poll.poll){
             retval = "Poll already exists!\n"
                     +poll.poll+"\n"
@@ -55,7 +58,9 @@ var process_poll = function(message,delim="!cookie"){
                       user:author});
         }
 	}else if (res[1]=="option"){
-	    poll.push({option:quote[1]});
+	    if(!quote[1]){}else{
+	        poll.push({option:quote[1]});
+        }
 	}
 		  
 	console.log(author+"|"+res+"|"+quote);
