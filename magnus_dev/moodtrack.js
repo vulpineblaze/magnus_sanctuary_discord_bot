@@ -29,7 +29,6 @@ var check_and_store = function(message){
 	    var user_string = message.author.toString().replace(/[\<\>\@]/g,'');
         
         dict.push({
-            server:   message.guild.id.toString(),
             user: user_string,
             mood: res[1],
             number: res[2],
