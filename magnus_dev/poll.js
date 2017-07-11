@@ -44,6 +44,7 @@ var process_poll = function(message,delim="!cookie"){
               +"!poll clear | wipes current poll \n"
               ; 
 	
+    if(!poll){var poll = {poll:"",user:""};}
     
     if(!res[1]){
         
@@ -70,8 +71,8 @@ var process_poll = function(message,delim="!cookie"){
             +option[option.length-1].option;
         }
 	}else if(res[1]=="clear"){
-        var poll = {poll:"",user:""};
-        var option = [];
+        poll = {poll:"",user:""};
+        option = [];
         retval = "Cleared the poll!";
     }
 		  
