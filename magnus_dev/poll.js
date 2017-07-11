@@ -44,7 +44,7 @@ var process_poll = function(message,delim="!cookie"){
               +"!poll clear | wipes current poll \n"
               ; 
 	
-    if(!poll){var poll = {poll:"",user:""};}
+
     
     if(!res[1]){
         
