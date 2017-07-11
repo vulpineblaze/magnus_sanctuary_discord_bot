@@ -81,6 +81,7 @@ var process_poll = function(message,delim="!cookie"){
         var i = res[1];
 	    if(option[i]){
             option[i].tally =+ 1;
+            retval = option[i].option +" : "+ option[i].tally;
         }else{
             retval = "Option "+i+" does not exist!";
         }
