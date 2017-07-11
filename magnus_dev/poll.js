@@ -6,7 +6,8 @@
 
 var fs = require('fs');
 var userlist = "";
-var poll = [];
+var poll = {poll:"",user:""};
+var option = [];
 
 var util = require('util');
 
@@ -50,21 +51,21 @@ var process_poll = function(message,delim="!cookie"){
 	    // create poll
 //         console.log("res1: "+res[1]);
         
-        if(poll.length > 0 && poll[0].poll){
+        if(poll.poll){
             retval = "Poll already exists!\n"
-                    +poll[0].poll+"\n"
-                    +poll[0].option;
+                    +poll.poll+"\n"
+                    +option;
         }else{
             if(!quote[1]){}else{
-                poll.push({poll:quote[1],
-                          user:author});
+                poll.poll=quote[1];
+                poll.user:author;
                 retval = "Poll is now:\n"
-                            +poll[0].poll;
+                            +poll.poll;
             }
         }
 	}else if (res[1]=="option"){
 	    if(!quote[1]){}else{
-	        poll.push({option:quote[1]});
+	        option.push({option:quote[1]});
         }
 	}else if(res[1]=="clear"){
         poll = [];
