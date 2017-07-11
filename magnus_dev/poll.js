@@ -80,7 +80,7 @@ var process_poll = function(message,delim="!cookie"){
 	}else if (!isNaN(res[1])){
         var i = res[1]-1;
 	    if(option[i]){
-            option[i].tally =+ 1;
+            option[i].tally += 1;
             retval = option[i].option +" : "+ option[i].tally;
         }else{
             retval = "Option "+res[1]+" does not exist!";
