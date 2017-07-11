@@ -28,13 +28,38 @@ function load_json(){
 
 var process_poll = function(message,delim="!cookie"){
 
-	var user = message.author.username;
+	var author = message.author.username;
 	var text = message.toString();
-
+	var retval ="x";
+    var poll = [];
 	
 	var res = text.split(" ");
+	var quote = text.split("\"");
 	
+	if (res[1].charAt(0) =='\"'){
+	    // create poll
+        if(poll.poll){
+            retval = "Poll already exists!\n"
+                    +poll.poll+"\n"
+                    +poll.option;
+        }else{
+            poll.push({poll:quote[1],
+                      user:author});
+        }
+	}else if (res[1]=="option"){
+	    poll.push({option:quote[1]});
+	}else{
+		 retval = "Your input did not match expected pattern\n"
+              +"!poll \"text\" | creates poll "
+              +"!poll option \"text\" | adds option "
+              +"!poll 1 | votes for option 1 "
+              +"!poll clear | wipes current poll "
+              ; 
+	}
+		  
 	console.log(user+"|"+res);
+	
+	return "Still in progress";
 	
 }
 
