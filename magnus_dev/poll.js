@@ -30,13 +30,21 @@ var process_poll = function(message,delim="!cookie"){
 
 	var author = message.author.username;
 	var text = message.toString();
-	var retval ="x";
     var poll = [];
 	
 	var res = text.split(" ");
 	var quote = text.split("\"");
+    
+    var retval = "Your input did not match expected pattern\n"
+              +"!poll \"text\" | creates poll "
+              +"!poll option \"text\" | adds option "
+              +"!poll 1 | votes for option 1 "
+              +"!poll clear | wipes current poll "
+              ; 
 	
-	if (res[1].charAt(0) =='\"'){
+    if(!res[1]){
+        
+    }else if (res[1].charAt(0) =='\"'){
 	    // create poll
         if(poll.poll){
             retval = "Poll already exists!\n"
@@ -48,13 +56,6 @@ var process_poll = function(message,delim="!cookie"){
         }
 	}else if (res[1]=="option"){
 	    poll.push({option:quote[1]});
-	}else{
-		 retval = "Your input did not match expected pattern\n"
-              +"!poll \"text\" | creates poll "
-              +"!poll option \"text\" | adds option "
-              +"!poll 1 | votes for option 1 "
-              +"!poll clear | wipes current poll "
-              ; 
 	}
 		  
 	console.log(user+"|"+res);
