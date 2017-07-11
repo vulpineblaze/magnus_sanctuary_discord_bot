@@ -50,10 +50,10 @@ var process_poll = function(message,delim="!cookie"){
 	    // create poll
 //         console.log("res1: "+res[1]);
         
-        if(poll.poll){
+        if(poll.length > 0 && poll[0].poll){
             retval = "Poll already exists!\n"
-                    +poll.poll+"\n"
-                    +poll.option;
+                    +poll[0].poll+"\n"
+                    +poll[0].option;
         }else{
             if(!quote[1]){}else{
                 poll.push({poll:quote[1],
