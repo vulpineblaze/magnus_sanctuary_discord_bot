@@ -26,11 +26,11 @@ var check_and_store = function(message){
 //         message.channel.sendMessage("I have no current saving capacity.");
         
         var dict = []; // create an empty array
-	 
+	    var user_string = message.author.toString().replace(/[\<\>\@]/g,'');
         
         dict.push({
             server:   message.guild.id.toString(),
-            user: message.author.toString().replace(/[\<\>\@]/g,''),
+            user: user_string,
             mood: res[1],
             number: res[2],
             desc: res[3]
@@ -49,7 +49,8 @@ var check_and_store = function(message){
 //              var object= {word:'TEST'};
              collection.insert(dict, {safe:true}, function(err, result) {
                  console.log('saved to database: '+JSON.stringify(dict))
-              message.channel.send("Your entry has been saved to the database.");
+              message.author.send("Your entry has been saved to the database.\n
+                                  +"magnus.bot.nu/m"+user_string);
 //                collection.findOne({word:'TEST'}, function(err, item) {
 //                   console.log(item);
 //                });
