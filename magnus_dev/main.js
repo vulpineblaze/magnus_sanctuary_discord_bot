@@ -75,7 +75,7 @@ bot.on('message', message => {
   	message.channel.send(retval);
   }
 	
-  if(message.content.toLowerCase().includes("!poll")){
+  if(message.content.toLowerCase().includes("!poll") && !message.author.bot){
   // if(message.content.toLowerCase().includes("!cookie")){
   	console.log(message.text);
   	var retval = poll.process_poll(message,"!poll");
