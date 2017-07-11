@@ -58,7 +58,7 @@ var process_poll = function(message,delim="!cookie"){
 	    poll.push({option:quote[1]});
 	}
 		  
-	console.log(user+"|"+res);
+	console.log(author+"|"+res+"|"+quote);
 	
 	return "Still in progress";
 	
