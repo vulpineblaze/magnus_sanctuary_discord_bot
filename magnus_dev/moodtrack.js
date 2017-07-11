@@ -49,7 +49,7 @@ var check_and_store = function(message){
 //              var object= {word:'TEST'};
              collection.insert(dict, {safe:true}, function(err, result) {
                  console.log('saved to database: '+JSON.stringify(dict))
-              message.author.send("Your entry has been saved to the database.\n
+              message.author.send("Your entry has been saved to the database.\n"
                                   +"magnus.bot.nu/m"+user_string);
 //                collection.findOne({word:'TEST'}, function(err, item) {
 //                   console.log(item);
