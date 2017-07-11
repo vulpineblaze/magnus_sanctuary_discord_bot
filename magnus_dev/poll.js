@@ -58,9 +58,8 @@ var process_poll = function(message,delim="!cookie"){
             if(!quote[1]){}else{
                 poll.push({poll:quote[1],
                           user:author});
-		var temp = JSON.parse(poll);
                 retval = "Poll is now:\n"
-                            +temp.poll;
+                            +poll.poll;
             }
         }
 	}else if (res[1]=="option"){
