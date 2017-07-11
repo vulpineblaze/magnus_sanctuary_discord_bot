@@ -58,7 +58,7 @@ var process_poll = function(message,delim="!cookie"){
         }else{
             if(!quote[1]){}else{
                 poll.poll=quote[1];
-                poll.user:author;
+                poll.user=author;
                 retval = "Poll is now:\n"
                             +poll.poll;
             }
