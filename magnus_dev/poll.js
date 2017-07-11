@@ -94,6 +94,5 @@ var process_poll = function(message,delim="!cookie"){
 
 module.exports = {
    process_poll : process_poll,
-   load_json:load_json
 
 }
