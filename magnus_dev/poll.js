@@ -66,9 +66,13 @@ var process_poll = function(message,delim="!cookie"){
 	}else if (res[1]=="option"){
 	    if(!quote[1]){}else{
 	        option.push({option:quote[1]});
+            retval = "Added option:\n"
+            +option[option.length-1].option;
         }
 	}else if(res[1]=="clear"){
-        poll = [];
+        var poll = {poll:"",user:""};
+        var option = [];
+        retval = "Cleared the poll!";
     }
 		  
 	console.log(author+"|"+res+"|"+quote+"\n"+JSON.stringify(poll));
