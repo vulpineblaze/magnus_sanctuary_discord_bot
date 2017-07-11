@@ -78,7 +78,7 @@ bot.on('message', message => {
   if(message.content.toLowerCase().includes("!poll")){
   // if(message.content.toLowerCase().includes("!cookie")){
   	console.log(message.text);
-  	var retval = cookie.give_cookie(message,"!poll");
+  	var retval = poll.process_poll(message,"!poll");
   	message.channel.send(retval);
   }
 
