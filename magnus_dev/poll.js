@@ -81,6 +81,7 @@ var process_poll = function(message,delim="!cookie"){
 	}else if(res[1]=="clear"){
         poll = {poll:"",user:""};
         option = [];
+	userlist = [];
         retval = "Cleared the poll!";
     }
 		  
