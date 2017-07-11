@@ -8,25 +8,7 @@ var fs = require('fs');
 var userlist = "";
 var poll = {poll:"",user:""};
 var option = [];
-
-var util = require('util');
-
-function save_json(obj){
-	fs.writeFile('./userlist.json', JSON.stringify(obj, null, 2),function (err, data) {
-	  if (err) throw err; // we'll not consider error handling for now
-	  // console.log("saved json: "+data);
-	})
-	console.log("saved json: "+obj);
-}
-
-function load_json(){
-	fs.readFile('./userlist.json', 'utf8', function (err, data) {
-	  if (err) throw err; // we'll not consider error handling for now
-	  console.log("loaded json: "+data);
-	  userlist = JSON.parse(data);
-	});
-	// return userlist;
-}
+var userlist = [];
 
 var process_poll = function(message,delim="!cookie"){
 
@@ -79,11 +61,22 @@ var process_poll = function(message,delim="!cookie"){
         }
 	}else if (!isNaN(res[1])){
         var i = res[1]-1;
-	    if(option[i]){
-            option[i].tally += 1;
-            retval = option[i].option +" : "+ option[i].tally;
+        var did_vote = false;
+        userlist.forEach(function(value){
+              if(author == value.user){
+                did_vote = true;
+              }
+            });
+        if(did_vote){
+            retval = "You have already voted in this poll!";
         }else{
-            retval = "Option "+res[1]+" does not exist!";
+            if(option[i]){
+                option[i].tally += 1;
+                retval = option[i].option +" : "+ option[i].tally;
+                userlist.push({user:author});
+            }else{
+                retval = "Option "+res[1]+" does not exist!";
+            }
         }
 	}else if(res[1]=="clear"){
         poll = {poll:"",user:""};
