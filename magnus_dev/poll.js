@@ -1,10 +1,4 @@
 
-
-// var userdict = {};
-// dict.key1 = "value1";
-// dict.key2 = "value2";
-
-var fs = require('fs');
 var userlist = "";
 var poll = {poll:"",user:""};
 var option = [];
