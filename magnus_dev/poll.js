@@ -50,7 +50,7 @@ var process_poll = function(message,delim="!cookie"){
         if(poll.poll){
 	        retval = poll.poll+"\n";
             option.forEach(function(value){
-              retval += value.option +"\n";
+              retval += value.option +" : "+value.tally+"\n";
             });
 	    }
     }else if (res[1].charAt(0) =='\"'){
@@ -59,8 +59,10 @@ var process_poll = function(message,delim="!cookie"){
         
         if(poll.poll){
             retval = "Poll already exists!\n"
-                    +poll.poll+"\n"
-                    +option;
+                    +poll.poll+"\n";
+            option.forEach(function(value){
+              retval += value.option  +" : "+value.tally+"\n";
+            });
         }else{
             if(!quote[1]){}else{
                 poll.poll=quote[1];
@@ -71,9 +73,16 @@ var process_poll = function(message,delim="!cookie"){
         }
 	}else if (res[1]=="option"){
 	    if(!quote[1]){}else{
-	        option.push({option:quote[1]});
+	        option.push({option:quote[1],tally:0});
             retval = "Added option:\n"
             +option[option.length-1].option;
+        }
+	}else if (!isNaN(res[1])){
+        var i = res[1];
+	    if(option[i]){
+            option[i].tally =+ 1;
+        }else{
+            retval = "Option "+i+" does not exist!";
         }
 	}else if(res[1]=="clear"){
         poll = {poll:"",user:""};
