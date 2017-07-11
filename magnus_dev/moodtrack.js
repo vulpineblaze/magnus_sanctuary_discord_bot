@@ -27,8 +27,10 @@ var check_and_store = function(message){
         
         var dict = []; // create an empty array
 	    var user_string = message.author.toString().replace(/[\<\>\@]/g,'');
+        var ts = new Date((Date.now() / 1000 | 0))*1000).toISOString().slice(0, -5);
         
         dict.push({
+	        timestamp : ts,
             user: user_string,
             mood: res[1],
             number: res[2],
