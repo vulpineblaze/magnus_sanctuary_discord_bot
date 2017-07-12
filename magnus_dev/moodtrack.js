@@ -7,7 +7,7 @@ var configDB = require('./database.js');
 
 var check_and_store = function(message){
 	// userlist = load_json();
-    var str = message.content.toLowerCase();
+    var str = message.content;
 	if(str.charAt(0)=='!' && str.charAt(1)==':'){
         var res = str.split(":");
         var mood = res[1];
