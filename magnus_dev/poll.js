@@ -10,7 +10,7 @@ var process_poll = function(message,delim="!cookie"){
 	var text = message.toString();
     
 	
-	var res = text.split(" ");
+	var res = text.toLowerCase().split(" ");
 	var quote = text.split("\"");
     
     var retval = "Your input did not match expected pattern\n"
