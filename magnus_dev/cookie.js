@@ -41,7 +41,7 @@ var give_cookie = function(message,delim="!cookie"){
 			var cookie_cnt = userlist[author]; 
 			console.log("cookie:"+cookie_cnt+"|"+author);
 			if(cookie_cnt && !isNaN(cookie_cnt) ){
-				add_text = "\n     You have "+cookie_cnt+ "cookies.";
+				add_text = "\n     You have "+cookie_cnt+ " cookies.";
 			}            
 		} 
 		return " \nPlease @mention a user deserving a cookie."+add_text
