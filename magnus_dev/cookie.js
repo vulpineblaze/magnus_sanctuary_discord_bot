@@ -36,12 +36,13 @@ var give_cookie = function(message,delim="!cookie"){
 	if (user){}else{
         // add text will append error msg with users curent cookie count
 		var add_text = "";
-        if(userlist[user]){
-            var cookie_cnt = userlist[user]; 
-			console.log("cookie:"+cookie_cnt+"|"+user);
-            if(cookie_cnt && !isNaN(cookie_cnt) ){
-                add_text = "\n     You have "+cookie_cnt+ "cookies.";
-            }            
+		var author = message.author;
+		if(userlist[author]){
+			var cookie_cnt = userlist[author]; 
+			console.log("cookie:"+cookie_cnt+"|"+author);
+			if(cookie_cnt && !isNaN(cookie_cnt) ){
+				add_text = "\n     You have "+cookie_cnt+ "cookies.";
+			}            
 		} 
 		return " \nPlease @mention a user deserving a cookie."+add_text
 	}
