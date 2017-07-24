@@ -38,7 +38,8 @@ var give_cookie = function(message,delim="!cookie"){
 		var add_text = "";
         if(userlist[user]){
             var cookie_cnt = userlist[user]; 
-            if(cookie_cnt){
+			console.log("cookie:"+cookie_cnt+"|"+user);
+            if(cookie_cnt && !isNaN(cookie_cnt) ){
                 add_text = "\n     You have "+cookie_cnt+ "cookies.";
             }            
 		} 
