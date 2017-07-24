@@ -37,8 +37,10 @@ var give_cookie = function(message,delim="!cookie"){
         // add text will append error msg with users curent cookie count
 		var add_text = "";
         if(userlist[user]){
-			value = userlist[user]; // doesnt update inc correctly
-            add_text = "\n     You have "+value+ "cookies.";
+            var cookie_cnt = userlist[user]; 
+            if(cookie_cnt){
+                add_text = "\n     You have "+cookie_cnt+ "cookies.";
+            }            
 		} 
 		return " \nPlease @mention a user deserving a cookie."+add_text
 	}
