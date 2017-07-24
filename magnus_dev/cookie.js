@@ -29,17 +29,17 @@ var give_cookie = function(message,delim="!cookie"){
 	// var delim="!cookie";
 
 
-	console.log("text:"+text);
+// 	console.log("text:"+text);
 	var result = text.slice(text.indexOf(delim) + delim.length);
 	var user = result.match(/\S+/gi);
-	console.log("user:"+user);
+// 	console.log("user:"+user);
 	if (user){}else{
         // add text will append error msg with users curent cookie count
 		var add_text = "";
 		var author = message.author;
 		if(userlist[author]){
 			var cookie_cnt = userlist[author]; 
-			console.log("cookie:"+cookie_cnt+"|"+author);
+// 			console.log("cookie:"+cookie_cnt+"|"+author);
 			if(cookie_cnt && !isNaN(cookie_cnt) ){
 				add_text = "\n     You have "+cookie_cnt+ " cookies.";
 			}            
@@ -51,7 +51,7 @@ var give_cookie = function(message,delim="!cookie"){
 
 	var test_user = message.mentions.users;
 	// console.log("user.id:"+user.id); // undefined
-	console.log("test_user:"+test_user.array());
+// 	console.log("test_user:"+test_user.array());
 	if(test_user.array().toString() == user.toString()){
 		console.log("equal! "+test_user.array()+" == "+user);
 	}else{
