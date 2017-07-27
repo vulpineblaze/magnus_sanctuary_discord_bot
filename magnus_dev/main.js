@@ -68,7 +68,7 @@ bot.on('message', message => {
 		message.channel.send("timestamps:\n"+ts_string);
   }
 
-  if(is_admin && message.content.toLowerCase().includes("!cookie")){
+  if(message.content.toLowerCase().includes("!cookie")){
   // if(message.content.toLowerCase().includes("!cookie")){
   	console.log(message.text);
   	var retval = cookie.give_cookie(message,"!cookie");
