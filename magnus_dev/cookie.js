@@ -31,7 +31,7 @@ var give_cookie = function(message,delim="!cookie"){
 
 // 	console.log("text:"+text);
 	var result = text.slice(text.indexOf(delim) + delim.length);
-	var user = result.match(/\S+/gi);
+	var user = result.match(/\S+/gi).replace(/\!/g, '');
 // 	console.log("user:"+user);
 	if (user){}else{
         // add text will append error msg with users curent cookie count
