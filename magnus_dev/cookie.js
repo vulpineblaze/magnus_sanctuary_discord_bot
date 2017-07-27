@@ -32,7 +32,6 @@ var give_cookie = function(message,delim="!cookie"){
 // 	console.log("text:"+text);
 	var result = text.slice(text.indexOf(delim) + delim.length);
 	var user = result.match(/\S+/gi);
-	user = user.replace(/\/\!/g, '/');
 // 	console.log("user:"+user);
 	if (user){}else{
         // add text will append error msg with users curent cookie count
@@ -53,7 +52,7 @@ var give_cookie = function(message,delim="!cookie"){
 	var test_user = message.mentions.users;
 	// console.log("user.id:"+user.id); // undefined
 // 	console.log("test_user:"+test_user.array());
-	if(test_user.array().toString() == user.toString()){
+	if(test_user.array().toString() == user.toString().replace(/\/\!/g, '/')){
 		console.log("equal! "+test_user.array()+" == "+user);
 	}else{
 		return " User does not match @mention. \nPlease @mention the user deserving a cookie."
