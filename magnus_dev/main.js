@@ -69,9 +69,11 @@ bot.on('message', message => {
   }
 
   if(message.content.toLowerCase().includes("!cookie")){
-  // if(message.content.toLowerCase().includes("!cookie")){
-  	console.log(message.text);
   	var retval = cookie.give_cookie(message,"!cookie");
+  	message.channel.send(retval);
+  }
+  if(message.content.toLowerCase().includes("!cookies")){
+  	var retval = cookie.give_cookie(message,"!cookies");
   	message.channel.send(retval);
   }
 	
