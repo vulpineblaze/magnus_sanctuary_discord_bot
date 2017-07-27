@@ -68,12 +68,12 @@ bot.on('message', message => {
 		message.channel.send("timestamps:\n"+ts_string);
   }
 
-  if(message.content.toLowerCase().includes("!cookie")){
-  	var retval = cookie.give_cookie(message,"!cookie");
-  	message.channel.send(retval);
-  }
   if(message.content.toLowerCase().includes("!cookies")){
   	var retval = cookie.give_cookie(message,"!cookies");
+  	message.channel.send(retval);
+  }
+  else if(message.content.toLowerCase().includes("!cookie")){
+  	var retval = cookie.give_cookie(message,"!cookie");
   	message.channel.send(retval);
   }
 	
