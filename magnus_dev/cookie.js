@@ -9,7 +9,7 @@ function save_json(obj){
 	  if (err) throw err; // we'll not consider error handling for now
 	  // console.log("saved json: "+data);
 	})
-	console.log("saved json: "+obj);
+// 	console.log("saved json: "+obj);
 }
 
 function load_json(){
