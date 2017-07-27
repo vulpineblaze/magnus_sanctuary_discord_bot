@@ -21,6 +21,18 @@ function load_json(){
 	// return userlist;
 }
 
+function add_text(message){
+		var author = message.author;
+		if(userlist[author]){
+			var cookie_cnt = userlist[author]; 
+// 			console.log("cookie:"+cookie_cnt+"|"+author);
+			if(cookie_cnt && !isNaN(cookie_cnt) ){
+				return "\n     You have "+cookie_cnt+ " cookies.";
+			}            
+		} 
+	return "";
+}
+
 var give_cookie = function(message,delim="!cookie"){
 	// userlist = load_json();
 
@@ -33,18 +45,11 @@ var give_cookie = function(message,delim="!cookie"){
 	var result = text.slice(text.indexOf(delim) + delim.length);
 	var user = result.match(/\S+/gi);
 // 	console.log("user:"+user);
+	var add_text = "";
 	if (user){}else{
         // add text will append error msg with users curent cookie count
-		var add_text = "";
-		var author = message.author;
-		if(userlist[author]){
-			var cookie_cnt = userlist[author]; 
-// 			console.log("cookie:"+cookie_cnt+"|"+author);
-			if(cookie_cnt && !isNaN(cookie_cnt) ){
-				add_text = "\n     You have "+cookie_cnt+ " cookies.";
-			}            
-		} 
-		return " \nPlease @mention a user deserving a cookie."+add_text
+		var add_text = add_text(message);
+		return " \nPlease @mention a user deserving a cookie."+add_text;
 	}
 
 	var value = 1;
@@ -53,7 +58,7 @@ var give_cookie = function(message,delim="!cookie"){
 	// console.log("user.id:"+user.id); // undefined
 // 	console.log("test_user:"+test_user.array());
 	if(test_user.array().toString() == message.author.toString().replace(/\/\!/g, '/')){
-		return " Can't give yourself a cookie, silly! "+add_text
+		return " Can't give yourself a cookie, silly! "+add_text(message);
 	}else if(test_user.array().toString() == user.toString().replace(/\/\!/g, '/')){
 		console.log("equal! "+test_user.array()+" == "+user);
 	}else{
