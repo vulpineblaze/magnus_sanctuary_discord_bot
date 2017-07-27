@@ -52,7 +52,7 @@ var give_cookie = function(message,delim="!cookie"){
 	var test_user = message.mentions.users;
 	// console.log("user.id:"+user.id); // undefined
 // 	console.log("test_user:"+test_user.array());
-	if(test_user.array().toString() == messsage.author.toString().replace(/\/\!/g, '/')){
+	if(test_user.array().toString() == message.author.toString().replace(/\/\!/g, '/')){
 		return " Can't give yourself a cookie, silly! "+add_text
 	}else if(test_user.array().toString() == user.toString().replace(/\/\!/g, '/')){
 		console.log("equal! "+test_user.array()+" == "+user);
