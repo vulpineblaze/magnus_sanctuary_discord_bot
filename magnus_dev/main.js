@@ -78,7 +78,7 @@ bot.on('message', message => {
   	message.channel.send(retval);
   }
 	
-  if(message.content.toLowerCase().includes("!calendar")){
+  if(!message.author.bot && message.content.toLowerCase().includes("!calendar")){
   	var retval = calendar.process_calendar(message,"!calendar");
   	message.channel.send(retval);
   }
