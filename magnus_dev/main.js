@@ -79,8 +79,8 @@ bot.on('message', message => {
   }
 	
   if(!message.author.bot && message.content.toLowerCase().includes("!calendar")){
-  	var retval = calendar.process_calendar(message,"!calendar");
-  	message.channel.send("```markdown\n"+retval+"\n```");
+  	calendar.process_calendar(message,"!calendar");
+
   }
 	
   if(message.content.toLowerCase().includes("!poll") && !message.author.bot){
