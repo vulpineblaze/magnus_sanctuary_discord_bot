@@ -2,12 +2,13 @@
 
 const MongoClient = require('mongodb').MongoClient
 var configDB = require('./database.js');
+var tz_offset = -14;
 
 function push_to_db(message, quote, timeshift){
 	
     var dict = []; // create an empty array
     var user_string = message.author.toString().replace(/[\<\>\@]/g,'');
-    var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, -5);
+    var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, tz_offset);
 
 
     dict.push({
@@ -30,12 +31,13 @@ function push_to_db(message, quote, timeshift){
 }
 
 function pull_from_db(){
-    var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, -5);
+    var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, tz_offset);
     console.log("ts:"+ts);
-    db.collection('calendar').find({timestamp:ts}).toArray((err, result) => {
-        
-        console.log(result);
-  
+    MongoClient.connect(configDB.url, (err, database) => {
+        if (err) return console.log(err)
+        database.collection('calendar').find({timestamp:ts}).toArray((err, result) => {
+            console.log(result);
+        })
     })
 }
 
