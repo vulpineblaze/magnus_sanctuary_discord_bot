@@ -43,7 +43,7 @@ function pull_from_db(){
         database.collection('calendar').find({timestamp:ts}).toArray((err, result) => {
             console.log(result);
 //             return result.text[1]
-            for (var i = 0, len = arr.length; i < len; i++) {
+            for (var i = 0, len = result.length; i < len; i++) {
                 ret_string += "\n     "+result[i].text[1];
             }
             
