@@ -5,11 +5,11 @@ var configDB = require('./database.js');
 var tz_offset = -14;
 var force_sync = true;
 
-function wait(){
+function wait(ret_string){
   if (force_sync){
     setTimeout(wait,100);
   } else {
-    // CODE GOES IN HERE
+    return ret_string;
   }
 }
 
@@ -59,8 +59,8 @@ function pull_from_db(){
             force_sync = false;
         })
     })
-    wait();
-    return ret_string;
+    
+    return wait(ret_string);
 }
 
 
