@@ -31,6 +31,8 @@ function push_to_db(message, quote, timeshift){
 }
 
 function pull_from_db(){
+    var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, -5);
+    console.log("ts:"+ts);
     db.collection('calendar').find({timestamp:ts}).toArray((err, result) => {
         
         console.log(result);
@@ -51,7 +53,7 @@ var process_calendar = function(message,delim="!calendar"){
     var ret_string = "Your input did not match expected pattern\n"
               +"!calendar view \n     shows calendar enries \n"
               +"!calendar {time} \"text\" \n     creates {timed} calendar entry \n"
-              +"     Valid entries are daily|weekly|monthly|yearly \n"
+              +"     Valid entries are: \n          daily|weekly|monthly|yearly \n"
               +"!calendar clear \"text\" \n     wipes your calendar entry \n"
               ; 
     
