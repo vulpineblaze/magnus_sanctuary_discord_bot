@@ -48,7 +48,7 @@ function pull_from_db(message){
                 console.log("result[i]:"+ret_string);
                 
             }
-            msg.channel.send("```markdown\n"+ret_string+"\n```");
+            message.channel.send("```markdown\n"+ret_string+"\n```");
         })
     })
 
