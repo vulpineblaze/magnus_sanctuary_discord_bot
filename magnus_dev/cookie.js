@@ -70,17 +70,17 @@ var give_cookie = function(message,delim="!cookie"){
 		return " User does not match @mention. \nPlease @mention the user deserving a cookie."
 	}
 
-	if(userlist[user]){
-		userlist[user]++;
-		value = userlist[user]; // doesnt update inc correctly
+	if(userlist[found_in_json]){
+		userlist[found_in_json]++;
+		value = userlist[found_in_json]; // doesnt update inc correctly
 	} else{
-		userlist[user] = value;
+		userlist[found_in_json] = value;
 	}
 
 	save_json(userlist);
 
 
-	var linkable_user = user;
+	var linkable_user = found_in_json;
 	var ret_string = linkable_user+" now has "+value+" cookies!"
 	return ret_string;
 
