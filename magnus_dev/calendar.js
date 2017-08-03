@@ -41,6 +41,7 @@ function pull_from_db(){
 
 
 var process_calendar = function(message,delim="!calendar"){
+    var text = message.toString();
     var res = text.toLowerCase().split(" ");
     var quote = text.split("\"");
     var has_quote = false;
