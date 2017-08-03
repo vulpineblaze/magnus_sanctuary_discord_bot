@@ -60,7 +60,8 @@ function pull_from_db(){
         })
     })
     
-    return wait();
+    var test = wait();
+    return test;
 }
 
 
