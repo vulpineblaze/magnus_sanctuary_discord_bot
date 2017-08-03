@@ -5,6 +5,14 @@ var configDB = require('./database.js');
 var tz_offset = -14;
 var force_sync = true;
 
+function wait(){
+  if (force_sync){
+    setTimeout(wait,100);
+  } else {
+    // CODE GOES IN HERE
+  }
+}
+
 function push_to_db(message, quote, timeshift){
 	
     var dict = []; // create an empty array
@@ -50,9 +58,7 @@ function pull_from_db(){
             force_sync = false;
         })
     })
-    while(force_sync){
-        setTimeout(wait,100);
-    }
+    wait();
     return ret_string;
 }
 
