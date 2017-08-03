@@ -57,12 +57,14 @@ var give_cookie = function(message,delim="!cookie"){
 	var test_user = message.mentions.users;
 	// console.log("user.id:"+user.id); // undefined
 // 	console.log("test_user:"+test_user.array());
-	if(test_user.array().toString() == message.author.toString().replace(/\!/g, '/')){
+    var found_in_mentions = test_user.array().toString();
+    var found_in_json = user.toString().replace(/\!/g, '')
+	if(found_in_mentions == message.author.toString().replace(/\!/g, '')){
 		return " Can't give yourself a cookie, silly! "+add_text_func(message);
-	}else if(test_user.array().toString() == user.toString().replace(/\!/g, '/')){
-		console.log("equal! "+test_user.array()+" == "+user);
+	}else if(found_in_mentions == found_in_json){
+		console.log("equal! "+found_in_mentions+" == "+found_in_json);
 	}else{
-        console.log("not equal! "+test_user.array()+" == "+user);
+        console.log("not equal! "+found_in_mentions+" == "+found_in_json);
 		return " User does not match @mention. \nPlease @mention the user deserving a cookie."
 	}
 
