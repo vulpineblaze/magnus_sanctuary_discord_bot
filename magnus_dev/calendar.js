@@ -3,15 +3,10 @@
 const MongoClient = require('mongodb').MongoClient
 var configDB = require('./database.js');
 var tz_offset = -14;
-var force_sync = true;
-var synced_ret_string = "";
-function wait(){
-  if (force_sync){
-    setTimeout(wait,2000);
-  } else {
-    return synced_ret_string;
-  }
-}
+
+
+
+
 
 function push_to_db(message, quote, timeshift){
 	
@@ -40,28 +35,26 @@ function push_to_db(message, quote, timeshift){
 }
 
 function pull_from_db(){
-    var synced_ret_string = "Found:";
+    var ret_string = "Found:";
     var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, tz_offset);
     console.log("ts:"+ts);
     MongoClient.connect(configDB.url, (err, database) => {
         if (err){ 
-            force_sync = false;
             return console.log(err)
         }
         database.collection('calendar').find({timestamp:ts}).toArray((err, result) => {
             console.log(result);
 //             return result.text[1]
             for (var i = 0, len = result.length; i < len; i++) {
-                synced_ret_string += "\n     "+result[i].text;
-                console.log("result[i]:"+synced_ret_string);
+                ret_string += "\n     "+result[i].text;
+                console.log("result[i]:"+ret_string);
+                
             }
-            
-            force_sync = false;
+            message.channel.send("```markdown\n"+ret_string+"\n```");
         })
     })
-    
-    var test = wait();
-    return test;
+
+    return "";
 }
 
 
@@ -107,7 +100,9 @@ var process_calendar = function(message,delim="!calendar"){
         ret_string = "Missing quote for text\n" + ret_string;   
     }
     
-	return ret_string;
+	if(ret_string){
+		message.channel.send("```markdown\n"+ret_string+"\n```");
+	}
 
 }
 
