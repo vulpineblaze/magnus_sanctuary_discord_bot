@@ -7,7 +7,7 @@ var force_sync = true;
 var synced_ret_string = "";
 function wait(){
   if (force_sync){
-    setTimeout(wait,100);
+    setTimeout(wait,2000);
   } else {
     return synced_ret_string;
   }
