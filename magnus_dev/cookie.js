@@ -59,9 +59,10 @@ var give_cookie = function(message,delim="!cookie"){
 // 	console.log("test_user:"+test_user.array());
 	if(test_user.array().toString() == message.author.toString().replace(/\!/g, '/')){
 		return " Can't give yourself a cookie, silly! "+add_text_func(message);
-	}else if(test_user.array().toString() == user.toString().replace(/\/\!/g, '/')){
+	}else if(test_user.array().toString() == user.toString().replace(/\!/g, '/')){
 		console.log("equal! "+test_user.array()+" == "+user);
 	}else{
+        console.log("not equal! "+test_user.array()+" == "+user);
 		return " User does not match @mention. \nPlease @mention the user deserving a cookie."
 	}
 
