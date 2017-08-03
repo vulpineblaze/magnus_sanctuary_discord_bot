@@ -15,6 +15,7 @@ const redirector = require('./redirector.js');
 const moodtrack = require('./moodtrack.js');
 const linksave = require('./linksave.js');
 const poll = require('./poll.js');
+const calendar = require('./calendar.js');
 
 // create an instance of a Discord Client, and call it bot
 const bot = new Discord.Client();
@@ -74,6 +75,11 @@ bot.on('message', message => {
   }
   else if(message.content.toLowerCase().includes("!cookie")){
   	var retval = cookie.give_cookie(message,"!cookie");
+  	message.channel.send(retval);
+  }
+	
+  if(message.content.toLowerCase().includes("!calendar")){
+  	var retval = calendar.process_calendar(message,"!calendar");
   	message.channel.send(retval);
   }
 	
