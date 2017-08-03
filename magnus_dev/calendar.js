@@ -53,7 +53,7 @@ function pull_from_db(){
 //             return result.text[1]
             for (var i = 0, len = result.length; i < len; i++) {
                 ret_string += "\n     "+result[i].text;
-                console.log("result[i]:"+result[i].text);
+                console.log("result[i]:"+ret_string);
             }
             
             force_sync = false;
