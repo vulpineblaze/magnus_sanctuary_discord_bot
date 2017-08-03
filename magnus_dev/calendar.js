@@ -5,11 +5,9 @@ var configDB = require('./database.js');
 var tz_offset = -14;
 
 
-var msg;
 
 
 function push_to_db(message, quote, timeshift){
-    msg = message;
     var dict = []; // create an empty array
     var user_string = message.author.toString().replace(/[\<\>\@]/g,'');
     var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, tz_offset);
@@ -34,7 +32,7 @@ function push_to_db(message, quote, timeshift){
     return "Your entry \""+quote+"\" has been processed.";
 }
 
-function pull_from_db(){
+function pull_from_db(message){
     var ret_string = "Found:";
     var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, tz_offset);
     console.log("ts:"+ts);
@@ -83,7 +81,7 @@ var process_calendar = function(message,delim="!calendar"){
     
     if(param == "view" || param == "v"){
         has_quote=true; // to prevent extra error message
-	ret_string = pull_from_db();
+	ret_string = pull_from_db(message);
     }else if(has_quote && (param == "daily" 
                            || param == "d")){
         ret_string = push_to_db(message, quote[1], 0);
@@ -101,7 +99,7 @@ var process_calendar = function(message,delim="!calendar"){
     }
     
 	if(ret_string){
-		msg.channel.send("```markdown\n"+ret_string+"\n```");
+		message.channel.send("```markdown\n"+ret_string+"\n```");
 	}
 
 }
