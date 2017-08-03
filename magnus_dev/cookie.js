@@ -58,8 +58,8 @@ var give_cookie = function(message,delim="!cookie"){
 	// console.log("user.id:"+user.id); // undefined
 // 	console.log("test_user:"+test_user.array());
     var found_in_mentions = test_user.array().toString();
-    var found_in_json = user.toString().replace(/\!/g, '')
-    var found_as_author = message.author.toString().replace(/\!/g, '')
+    var found_in_json = user.toString().replace(/\!/g, '');
+    var found_as_author = message.author.toString().replace(/\!/g, '');
 	if(found_in_mentions == found_as_author){
 		console.log("self! "+found_in_mentions+" == "+found_as_author);
 		return " Can't give yourself a cookie, silly! "+add_text_func(message);
