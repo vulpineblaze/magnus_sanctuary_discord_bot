@@ -78,7 +78,5 @@ var process_calendar = function(message,delim="!calendar"){
 
 
 module.exports = {
-   process_calendar : process_calendar,
-   load_json:load_json
-
+   process_calendar : process_calendar
 }
