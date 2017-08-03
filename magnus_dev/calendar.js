@@ -49,19 +49,20 @@ var process_calendar = function(message,delim="!calendar"){
     var param = res[1];
     
     var ret_string = "Your input did not match expected pattern\n"
-              +"!calendar view | shows calendar enries \n"
-              +"!calendar {time} \"text\" | creates {timed} calendar entry \n"
+              +"!calendar view \n     shows calendar enries \n"
+              +"!calendar {time} \"text\" \n     creates {timed} calendar entry \n"
               +"     Valid entries are daily|weekly|monthly|yearly \n"
-              +"!calendar clear \"text\" | wipes your calendar entry \n"
+              +"!calendar clear \"text\" \n     wipes your calendar entry \n"
               ; 
     
     if(!quote[1]){
-        ret_string = "Missing quote for text\n" + ret_string;
+//         ret_string = "Missing quote for text\n" + ret_string;
     }else{
         has_quote = true;
     }
     
     if(param == "view" || param == "v"){
+        has_quote=true; // to prevent extra error message
     }else if(has_quote && (param == "daily" 
                            || param == "d")){
         push_to_db(message, quote);
@@ -70,9 +71,13 @@ var process_calendar = function(message,delim="!calendar"){
     }else if(param == "yearly" || param == "y"){
     }else if(param == "clear" || param == "c"){
     }else{
-        ret_string = "Parameter:"+param+" does not match expected value\n"+ret_string;
+//         ret_string = "Parameter:"+param+" does not match expected value\n"+ret_string;
+//         has_quote=true; // to prevent extra error message
     }
     
+	if(has_quote == false){
+        ret_string = "Missing quote for text\n" + ret_string;   
+    }
     
 	return ret_string;
 
