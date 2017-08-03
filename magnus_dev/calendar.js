@@ -65,9 +65,10 @@ var process_calendar = function(message,delim="!calendar"){
     
     if(param == "view" || param == "v"){
         has_quote=true; // to prevent extra error message
+	    pull_from_db();
     }else if(has_quote && (param == "daily" 
                            || param == "d")){
-        push_to_db(message, quote[1], 0);
+        ret_string = push_to_db(message, quote[1], 0);
     }else if(param == "monthly" || param == "m"){
     }else if(param == "weekly" || param == "w"){
     }else if(param == "yearly" || param == "y"){
