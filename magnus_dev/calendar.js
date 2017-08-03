@@ -4,12 +4,12 @@ const MongoClient = require('mongodb').MongoClient
 var configDB = require('./database.js');
 var tz_offset = -14;
 var force_sync = true;
-
-function wait(ret_string){
+var synced_ret_string = "";
+function wait(){
   if (force_sync){
     setTimeout(wait,100);
   } else {
-    return ret_string;
+    return synced_ret_string;
   }
 }
 
@@ -40,7 +40,7 @@ function push_to_db(message, quote, timeshift){
 }
 
 function pull_from_db(){
-    var ret_string = "Found:";
+    var synced_ret_string = "Found:";
     var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, tz_offset);
     console.log("ts:"+ts);
     MongoClient.connect(configDB.url, (err, database) => {
@@ -52,7 +52,7 @@ function pull_from_db(){
             console.log(result);
 //             return result.text[1]
             for (var i = 0, len = result.length; i < len; i++) {
-                ret_string += "\n     "+result[i].text;
+                synced_ret_string += "\n     "+result[i].text;
                 console.log("result[i]:"+ret_string);
             }
             
@@ -60,7 +60,7 @@ function pull_from_db(){
         })
     })
     
-    return wait(ret_string);
+    return wait();
 }
 
 
