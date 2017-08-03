@@ -5,7 +5,7 @@ var configDB = require('./database.js');
 
 function push_to_db(message, quote, timeshift){
 	
-    
+    var ret_string = "Push to the database failed..."
     var dict = []; // create an empty array
     var user_string = message.author.toString().replace(/[\<\>\@]/g,'');
     var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, -5);
@@ -24,11 +24,11 @@ function push_to_db(message, quote, timeshift){
                 console.log('saved to database: '+JSON.stringify(dict))
 //                 message.author.send("Your entry has been saved to the database.\n"
 //                                     +"magnus.bot.nu/m"+user_string);
-                return "Your entry has been saved to the database!"
+                ret_string = "Your entry has been saved to the database!";
             })      
         })
     })
-    
+    return ret_string;
 }
 
 function pull_from_db(){
