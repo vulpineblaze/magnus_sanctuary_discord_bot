@@ -33,9 +33,9 @@ function push_to_db(message, quote, timeshift){
 }
 
 function pull_from_db(message){
-    var ret_string = "Found:";
     var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, tz_offset);
-    console.log("ts:"+ts);
+    var ret_string = "Found for "+ts+":";
+//     console.log("ts:"+ts);
     MongoClient.connect(configDB.url, (err, database) => {
         if (err){ 
             return console.log(err)
@@ -71,6 +71,7 @@ var process_calendar = function(message,delim="!calendar"){
               +"!calendar {time} \"text\" \n     creates {timed} calendar entry \n"
               +"     Valid entries are: \n          daily|weekly|monthly|yearly \n"
               +"!calendar clear \"text\" \n     wipes your calendar entry \n"
+              +"!calendar is NOT production ready while this line exists! \n"
               ; 
     
     if(!quote[1]){
