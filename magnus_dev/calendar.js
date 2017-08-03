@@ -50,7 +50,7 @@ function pull_from_db(){
             force_sync = false;
         })
     })
-    while(force_sync){if(!force_sync){break;}}
+//     while(force_sync){if(!force_sync){break;}}
     return ret_string;
 }
 
