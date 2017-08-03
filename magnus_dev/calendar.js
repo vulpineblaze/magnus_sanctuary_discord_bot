@@ -50,7 +50,8 @@ var process_calendar = function(message,delim="!calendar"){
     
     var ret_string = "Your input did not match expected pattern\n"
               +"!calendar view | shows calendar enries \n"
-              +"!calendar daily|weekly|monthly|yearly \"text\" | creates daily|weekly|monthly|yearly calendar entry \n"
+              +"!calendar {time} \"text\" | creates {timed} calendar entry \n"
+              +"     Valid entries are daily|weekly|monthly|yearly \n"
               +"!calendar clear \"text\" | wipes your calendar entry \n"
               ; 
     
