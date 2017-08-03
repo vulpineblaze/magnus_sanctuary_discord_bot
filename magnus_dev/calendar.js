@@ -24,6 +24,7 @@ function push_to_db(message, quote, timeshift){
                 console.log('saved to database: '+JSON.stringify(dict))
 //                 message.author.send("Your entry has been saved to the database.\n"
 //                                     +"magnus.bot.nu/m"+user_string);
+                return "Your entry has been saved to the database!"
             })      
         })
     })
@@ -48,6 +49,7 @@ var process_calendar = function(message,delim="!calendar"){
     var quote = text.split("\"");
     var has_quote = false;
     
+    
     var param = res[1];
     
     var ret_string = "Your input did not match expected pattern\n"
@@ -67,7 +69,7 @@ var process_calendar = function(message,delim="!calendar"){
         has_quote=true; // to prevent extra error message
     }else if(has_quote && (param == "daily" 
                            || param == "d")){
-        push_to_db(message, quote);
+        ret_string = push_to_db(message, quote, 0);
     }else if(param == "monthly" || param == "m"){
     }else if(param == "weekly" || param == "w"){
     }else if(param == "yearly" || param == "y"){
