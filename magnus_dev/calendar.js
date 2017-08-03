@@ -5,11 +5,11 @@ var configDB = require('./database.js');
 var tz_offset = -14;
 
 
-
+var msg;
 
 
 function push_to_db(message, quote, timeshift){
-	
+    msg = message;
     var dict = []; // create an empty array
     var user_string = message.author.toString().replace(/[\<\>\@]/g,'');
     var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, tz_offset);
@@ -50,7 +50,7 @@ function pull_from_db(){
                 console.log("result[i]:"+ret_string);
                 
             }
-            message.channel.send("```markdown\n"+ret_string+"\n```");
+            msg.channel.send("```markdown\n"+ret_string+"\n```");
         })
     })
 
@@ -101,7 +101,7 @@ var process_calendar = function(message,delim="!calendar"){
     }
     
 	if(ret_string){
-		message.channel.send("```markdown\n"+ret_string+"\n```");
+		msg.channel.send("```markdown\n"+ret_string+"\n```");
 	}
 
 }
