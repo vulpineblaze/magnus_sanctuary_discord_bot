@@ -31,14 +31,27 @@ function push_to_db(message, quote, timeshift){
 }
 
 function pull_from_db(){
+    var ret_string = "Found:";
+    var force_sync = true;
     var ts = new Date( (Date.now() / 1000 | 0)*1000 ).toISOString().slice(0, tz_offset);
     console.log("ts:"+ts);
     MongoClient.connect(configDB.url, (err, database) => {
-        if (err) return console.log(err)
+        if (err){ 
+            force_sync = 0;
+            return console.log(err)
+        }
         database.collection('calendar').find({timestamp:ts}).toArray((err, result) => {
             console.log(result);
+//             return result.text[1]
+            for (var i = 0, len = arr.length; i < len; i++) {
+                ret_string += "\n     "+result[i].text[1];
+            }
+            
+            force_sync = 0;
         })
     })
+    while(force_sync){}
+    return ret_string;
 }
 
 
@@ -67,7 +80,7 @@ var process_calendar = function(message,delim="!calendar"){
     
     if(param == "view" || param == "v"){
         has_quote=true; // to prevent extra error message
-	    pull_from_db();
+	ret_string = pull_from_db();
     }else if(has_quote && (param == "daily" 
                            || param == "d")){
         ret_string = push_to_db(message, quote[1], 0);
